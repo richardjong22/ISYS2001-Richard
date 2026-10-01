@@ -14,10 +14,10 @@ Define the project problem statement, establish the target audience (university 
 - **AI Response Summary**: 
   The AI suggested a problem statement focused on students trying to reach a savings target (e.g., $600 in 3 months) by analyzing transaction CSV files and calculating monthly budget gaps.
 
-### 3. Decisions & Adaptations
+### 3. What I did with it
 - **What I Kept**: 
   I adopted the "Student Budget & Savings Goal Helper" idea as it addresses a realistic financial problem for university students. I kept the hand-calculated example and logic for calculating required monthly savings versus current net savings.
-- **What I Changed / Refined**: 
+- **What I Changed**: 
   I refined the required inputs to explicitly require columns `Date`, `Description`, `Category`, and `Amount` in the CSV to match standard transaction dataset formats.
 
 ### 4. Rejections & Reasoning
@@ -25,5 +25,31 @@ Define the project problem statement, establish the target audience (university 
   The AI initially suggested using an external database (SQLite) to store student profiles over time.
 - **Reason for Rejection**: 
   I rejected this because unit requirements specify using Pandas for CSV loading and processing. Introducing SQL would add unnecessary complexity and deviate from the unit's core stack.
+
+---
+
+## Week 2: Core Algorithm, CSV Processing, and Financial Logic
+**Date**: October 1, 2026
+
+### 1. Goal
+Implement the core financial logic for the Student Budget Assistant in Python, including CSV data loading with Pandas, transaction filtering (income vs. expense), monthly savings calculations, target goal verification, and input error handling.
+
+### 2. AI Collaboration & Prompts
+- **Prompt Used**: 
+  > *"Help me write a Python function that reads a transaction CSV with columns 'Date', 'Description', 'Category', and 'Amount', calculates total income and expenses, and determines if a student is on track to reach a target savings goal over a set number of months."*
+- **AI Response Summary**: 
+  The AI provided a Pandas-based function structure that validates input parameters, checks for required CSV headers, uses conditional filtering (`Amount > 0` for income, `Amount < 0` for expenses), counts required monthly savings (`target_amount / target_months`), and outputs a structured financial status string ("ON TRACK" vs "SHORTFALL DETECTED").
+
+### 3. What I did with it
+- **What I Kept**: 
+  I implemented the `monthly_gap` calculation logic (`current_monthly_savings - required_monthly_savings`) to clearly evaluate whether a student meets their goal or falls short. I also kept the explicit validation check for non-zero and non-negative target amounts/months.
+- **What I Changed**: 
+  I changed the expense calculation to explicitly use absolute values (`ABSOLUTE SUM of Amount WHERE Amount < 0`) so that net savings (`total_income - total_expenses`) evaluates correctly regardless of whether expense numbers in the CSV are logged as negative integers.
+
+### 4. Rejections & Reasoning
+- **Rejected Suggestion**: 
+  The AI suggested using complex regex pattern matching to auto-categorize missing transaction categories.
+- **Reason for Rejection**: 
+  I rejected this approach to keep the function predictable. Ensuring strict verification of required CSV headers before processing is cleaner and prevents unexpected runtime errors for invalid files.
 
 ---
