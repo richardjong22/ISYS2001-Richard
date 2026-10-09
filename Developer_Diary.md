@@ -53,3 +53,29 @@ Implement the core financial logic for the Student Budget Assistant in Python, i
   I rejected this approach to keep the function predictable. Ensuring strict verification of required CSV headers before processing is cleaner and prevents unexpected runtime errors for invalid files.
 
 ---
+
+## Week 3: Gemini API Integration, Unit Testing, and UI Finalization
+**Date**: October 9, 2026
+
+### 1. Goal
+Finalize the Student Budget Assistant application by integrating Google's Gemini API (`gemini-flash-latest`) for personalized financial coaching, securing API credentials via Google Colab Secrets, updating unit tests for dual-output data structures, and completing final project documentation.
+
+### 2. AI Collaboration & Prompts
+- **Prompt Used**: 
+  > *"Help me connect my Pandas financial summary function directly to the Gemini API while keeping the API key secure in Colab Secrets, updating my unit tests, and displaying both outputs cleanly in Gradio."*
+- **AI Response Summary**: 
+  The AI provided an updated modular structure where `calculate_savings_plan` returns both formatted text and a `financial_context` dictionary. It also provided a helper function `get_ai_financial_advice` using `google.colab.userdata` to securely retrieve `GOOGLE_API_KEY` and updated the Gradio interface to display dual text outputs.
+
+### 3. What I did with it
+- **What I Kept**: 
+  I kept standard 2-decimal place currency formatting (`:,.2f`) across financial summaries to maintain consistency with financial accounting standards. I also kept the modular dual-output approach to cleanly separate data analysis from AI coaching.
+- **What I Changed**: 
+  I adapted the unit test function `test_calculate_savings_plan()` to unpack the returned tuple `(summary, context)` and added explicit assertions to verify both string outputs and dictionary values (`context['total_income']`). Additionally, I added dependency installation (`!pip install -q google-generativeai`) at the top of the notebook.
+
+### 4. Rejections & Reasoning
+- **Rejected Suggestion**: 
+  The AI suggested hardcoding the Gemini API key directly into the Python code string for quick testing.
+- **Reason for Rejection**: 
+  I rejected hardcoding API keys because it creates severe security risks and violates Requirement 1 guidelines. Using Colab Secrets (`userdata.get('GOOGLE_API_KEY')`) ensures credentials remain hidden before pushing code to GitHub.
+
+---
