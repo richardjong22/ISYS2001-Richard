@@ -76,6 +76,38 @@ Finalize the Student Budget Assistant application by integrating Google's Gemini
 - **Rejected Suggestion**: 
   The AI suggested hardcoding the Gemini API key directly into the Python code string for quick testing.
 - **Reason for Rejection**: 
-  I rejected hardcoding API keys because it creates severe security risks and violates Requirement 1 guidelines. Using Colab Secrets (`userdata.get('GOOGLE_API_KEY')`) ensures credentials remain hidden before pushing code to GitHub.
+  I rejected hardcoding API keys because it creates severe security risks and violates Requirement 1 guidelines. Using Colab Secrets ('GOOGLE_API_KEY') ensures credentials remain hidden before pushing code to GitHub.
+
+---
+
+## Week 4: Edge-Case Testing and Bug Fixing
+**Date**: October 13, 2026
+
+### 1. Goal
+Test the Student Budget Assistant with unusual transaction values to identify potential calculation errors, fix any confirmed bugs, and verify that the existing calculations still work correctly.
+
+### 2. AI Collaboration & Prompts
+- **Prompt Used**: 
+  > *"Help me test my student budget calculation function with unusual transaction amounts and identify possible edge-case bugs."*
+- **AI Response Summary**: 
+  The AI suggested testing the calculation function with extremely large transaction amounts. This test was designed to check whether the program could handle totals that exceed the supported numeric range.
+  
+### 3. What I did with it
+- **What I Kept**: 
+  I kept the suggestion to test extremely large transaction amounts because it could reveal calculation problems that might not appear with normal financial data.
+- **What I Changed**: 
+  During testing, I found that two unusually large income values caused the calculated total to become inf. I added a validation check after calculating total income and expenses so the program could detect an invalid total and return an error message.
+
+### 4. Testing and Reflection
+Before the fix, the program produced an infinite total when processing extremely large transaction values. After adding the validation check, I ran the same test again, and the program returned an error message instead of continuing with an invalid financial result.
+This experience helped me understand the importance of edge-case testing. Testing only normal transaction amounts is not enough because unusual inputs can reveal problems that may otherwise go unnoticed.
+I will also rerun the existing tests to check that the fix does not affect normal financial calculations.
+
+5. Evidence
+Before the fix: The program returned inf when processing extremely large income values.
+<img width="1410" height="491" alt="Screenshot 2026-10-13 at 12 43 46 am" src="https://github.com/user-attachments/assets/701bc2d2-751b-47a0-a947-b9130098ab43" />
+
+After the fix: The program returned an error message instead of an infinite total.
+<img width="1414" height="334" alt="Screenshot 2026-10-13 at 12 44 20 am" src="https://github.com/user-attachments/assets/aa9bd516-0e4e-4d27-9cbf-4260d49489a1" />
 
 ---
