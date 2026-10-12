@@ -1,6 +1,6 @@
 # Student Budget & Savings Goal Helper 🎓💰
 
-A personal finance assistant designed specifically for university students. It processes transaction data from CSV files using Python and Pandas to evaluate budget feasibility and leverages Google's Gemini API to deliver personalized financial coaching.
+A budgeting assistant for university students. It reads transaction data from a CSV file with Python and Pandas, checks whether a savings goal is achievable, and uses Google's Gemini API to provide finance-related guidance based on the uploaded figures.
 
 **ISYS2001: Introduction to Business Programming**
 
@@ -17,10 +17,18 @@ A personal finance assistant designed specifically for university students. It p
 ## 📊 Sample Input & Output
 
 ### Input Example
-- **Uploaded File**: `transactions.csv` (Contains columns: `Date`, `Description`, `Category`, `Amount`)
+- **CSV format**: (Contains columns: `Date`, `Description`, `Category`, `Amount`)
+  Example file: `test_sample.csv`
+```csv
+Date,Description,Category,Amount
+2026-09-01,Salary,Income,1500.0
+2026-09-05,Rent,Housing,-800.0
+2026-09-10,Food,Dining,-200.0
+2026-09-15,Groceries,Snacks,-100.0
+```
 - **Target Savings Goal**: `$600.00`
 - **Target Timeframe**: `3 months`
-- **Optional Question**: *"Where can I cut down my expenses to meet my goal?"*
+- **Optional Question**: *"How can i cut my spending?"*
 
 ### Output Example
 - **Financial Analysis Summary (Pandas)**:
@@ -56,7 +64,10 @@ A personal finance assistant designed specifically for university students. It p
 ---
 
 ## 📁 Repository Structure
-- `student_budget_assistant.ipynb`: Main Google Colab notebook containing code, six-step evidence, unit tests, and Gradio UI.
-- `test_sample.csv`: Sample CSV dataset for testing transaction processing.
-- `README.md`: Project documentation and quick-start guide.
+- `student_budget_assistant.ipynb`: Main Google Colab notebook containing code, six-step evidence, unit tests, Gemini Integration, and Gradio UI.
+- `test_sample.csv`: Sample CSV dataset for testing.
+- `README.md`: Project overview and quick-start guide.
 - `Developer's_Diary.md`: Weekly reflection and development log.
+
+## Testing notes
+The notebook includes assertion-based tests for a normal case, negative/zero/fractional goal timeframes, missing file upload, missing required columns, non-numeric amounts, empty transaction data, and a shortfall case.
