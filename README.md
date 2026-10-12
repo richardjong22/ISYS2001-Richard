@@ -59,4 +59,4 @@ A personal finance assistant designed specifically for university students. It p
 - `student_budget_assistant.ipynb`: Main Google Colab notebook containing code, six-step evidence, unit tests, and Gradio UI.
 - `test_sample.csv`: Sample CSV dataset for testing transaction processing.
 - `README.md`: Project documentation and quick-start guide.
-- `DEVELOPERS_DIARY.md`: Weekly reflection and development log.
+- `Developer's_Diary.md`: Weekly reflection and development log.
