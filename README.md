@@ -31,7 +31,7 @@ A personal finance assistant designed specifically for university students. It p
   - Required Monthly Savings: `$200.00/month`
   - Goal Status: **✅ ON TRACK!** You exceed your required monthly target by `$200.00`.
 - **AI Financial Coach Advice (Gemini API)**:
-  > *"Great job! Your current savings rate easily covers your $600 goal in 3 months. To stay safe, maintain your current spending on Dining out ($120/month) and keep building your emergency fund."*
+  > *"Great job! Your current savings rate easily covers your $600 goal in 3 months. To stay safe, maintain your current spending on Groceries ($100/month) and keep building your emergency fund."*
 
 ---
 
