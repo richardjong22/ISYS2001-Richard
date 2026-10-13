@@ -70,4 +70,6 @@ Date,Description,Category,Amount
 - `Developer's_Diary.md`: Weekly reflection and development log.
 
 ## Testing notes
-The notebook includes assertion-based tests for a normal case, negative/zero/fractional goal timeframes, missing file upload, missing required columns, non-numeric amounts, empty transaction data, and a shortfall case.
+The notebook includes assertion-based tests for a normal case, negative target amounts, zero and fractional timeframes, missing file uploads, missing required columns, non-numeric transaction amounts, empty transaction data, and a shortfall case.
+
+An additional test covers extremely large transaction amounts that cause numeric overflow. The function detects totals outside the supported numeric range and returns an error message instead of continuing with an invalid financial result. All 10 tests passed after the fix.
