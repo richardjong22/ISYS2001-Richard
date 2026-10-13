@@ -99,9 +99,11 @@ Test the Student Budget Assistant with unusual transaction values to identify po
   During testing, I found that two unusually large income values caused the calculated total to become inf. I added a validation check after calculating total income and expenses so the program could detect an invalid total and return an error message.
 
 ### 4. Testing and Reflection
-Before the fix, the program produced an infinite total when processing extremely large transaction values. After adding the validation check, I ran the same test again, and the program returned an error message instead of continuing with an invalid financial result.
-This experience helped me understand the importance of edge-case testing. Testing only normal transaction amounts is not enough because unusual inputs can reveal problems that may otherwise go unnoticed.
-I will also rerun the existing tests to check that the fix does not affect normal financial calculations.
+Before the fix, the program produced an infinite total when processing extremely large transaction values. After adding the validation check, the program returned an error message instead of continuing with an invalid financial result.
+
+This experience helped me understand the importance of edge-case testing. Testing only normal transaction amounts is not enough because unusual inputs can reveal problems that might otherwise go unnoticed.
+
+After fixing the overflow issue, I reran the assertion-based tests, and all 10 tests passed. These tests covered normal calculations, invalid inputs, a shortfall case, and extremely large transaction values. This confirmed that the fix handled the overflow issue while the existing test cases continued to pass.
 
 5. Evidence
 Before the fix: The program returned inf when processing extremely large income values.
